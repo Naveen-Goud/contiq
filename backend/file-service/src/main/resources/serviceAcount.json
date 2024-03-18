@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "bc114contiq",
+  "private_key_id": "990d03eb51eb1d3414b85deab924e73b9c9545aa",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCdVNpi52DgrEJg\n72urXH65gDBlRqMJFkEv136cnYDEiBXSXNrxthB0Z/VeH0zEJJmuSIYx/QFLpHrG\nRAq2rxWkHRbgxWt0yPDf6LB8ofVTFONu/h5S3KcFetOwzbwPMF8LFh8gec0+sM1L\nldVO1HVJX/gYFqXH8YRYTnOWow/bdtqOMEV0Ul0RAzl1Rq1WFJ4uwA8DMIk6hR/I\nyuUA2S8DSDvBxnCZ6aYlC/OnDZGHo3UD4iXO0rt3nu2hFKhu4wJuxe9l1nmpjSh8\n4AR0l+N9Df4noZZPry5uoJ882qSSNbaraE52EZ5jTCYPuHEMe8mpXKA6jaFPhqsS\n0hzg/zGpAgMBAAECggEAEzOcda60iacscMU3uFHRG5W0EmA1HLJNIWglCTtF0Hal\nZyezBwYH6xUXArZCObwXz4gFbMtqoY9A9rquLg6fTwjH1oXxr+6oS0OMaqGfndSy\nT0UPcWCBt+7+MBlj5typ9OHtyZpj/M86Nwvh3T2b1Ok0D8iP0h+9XcOxYsSi9k9R\ndTjMe7mEKEGcY1aqhzVurvqrCMm0ogj3Bvu2Rskxap8LNMqd26NmMkOu7zNfuLPt\nPQnibz7xpgRkrlM+XI06eMk1QRJl1MEX+7IL3Wwe5RqkjaFUnP5G56PyhE99CdB7\n6rp6o0jM4hvNoZ1G2Y/KB6D63z2EMQ7GVY8L7zl1wwKBgQDc+vx9v2V+kXiRupjw\n4SpZq9ACTnBG6VXkn4cnV105+RhqGICzddVPy4zNC05/LY55Gg8/BAMDEZKM5rwz\nq/UqhQKcB18odWAiaOJ3tpYvpfNFYoX8F4Ln8DUVAkajkixHjWBDrq8FoUJuiT+m\nE+yt2FYJs+1TkckU8ODxatIkBwKBgQC2Q6zWE6GL+l9AHITuykbAnhl7IM/Eu9+V\nCSORB51loHjk6wjPhS1rVx232vbga4lX/ulvQvtZDdKNezdS6/EfjuBOSX9OSVF4\nkf9Cme+0eSIwq/RvbtvU4AsJbazxAOJhG55IVX5nkVGgb4KvER6CNNH0P5eqC0rM\n5nJcuedwzwKBgQCwFnQiw+Rdkg/wmC+NKu+zWty7KcQATak7L//j0pMgQiU5TeMo\nngnntvyw24SmhSfVynVBsrGvvU35Z1erGSiYxDrLGHi0ZavAX7Gu0VkmCOgsbxDz\nS8ztg5TY8+JUL4OHVNnTtRwUsWadbFLCxXfBI/WTb8P65t3ECRpGZeej+wKBgBEi\nYZAqfkhbfDLZu4F7UJVxB3I0znNvOgCXwFk0/w37vQHAOq7PlUp/ARM0qXrFgT7d\nfvJvuJNRolacm8HW3m8aDmotrKMeb2NHTljjgc5UiOtMbwk+wbnMah0zy0tIyv9Y\nClRAfUadObA8a2urz1NsRcSRad+ZeimzDFM9Qs2vAoGAbDPOiUAjmI7oDkklkQ9x\nyOS4aGaW3Ar9/V+4zkCsjqycUxUcuGClzK7vgZqBA4Ca8t87PVwS3dweWlT/SQhg\nYkEiL1Oge79Mt3CMnoab4lR9wcl7XQr/xmpdLTHZCJWaS7N1jL+EJkPjjQnWA56z\nm9OPAlmsokjvIeHtrc4K25k=\n-----END PRIVATE KEY-----\n",
+  "client_email": "contiq@bc114contiq.iam.gserviceaccount.com",
+  "client_id": "117403139286422554120",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/contiq%40bc114contiq.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

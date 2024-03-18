@@ -1,0 +1,359 @@
+# pvc:
+#   name: pvc-bc100
+#   storage: 4Gi
+#   accessModes:
+#   - ReadWriteOnce
+deployments:
+  - deployment_name: discovery-server-deployment
+    label_name: discovery-server-pod
+    container_name: discovery-server-container
+    replicaCount: 1     
+    image:
+      repository:  ghcr.io/ishtiaqsamdani007/bootcamp114-backend-discovery-server:latest
+    imagePullSecrets: my-docker-secret
+    port: 8761
+    env:
+    - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+      value: https://bc114be.bootcamp64.tk/eureka/
+      
+    - name: EUREKA_INSTANCE_HOSTNAME
+      value: discovery-server
+
+  - deployment_name: api-gateway-deployment
+    label_name: api-gateway-pod
+    container_name: api-gateway-container
+    replicaCount: 1     
+    image:
+      repository:  ghcr.io/ishtiaqsamdani007/bootcamp114-backend-api-gateway:latest
+    imagePullSecrets: my-docker-secret
+    port: 8090
+    env:
+    - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+      value: https://bc114be.bootcamp64.tk/eureka/
+      
+    - name: EUREKA_INSTANCE_HOSTNAME
+      value: api-gateway-service
+    
+  - deployment_name: file-service-deployment
+    label_name: file-service-pod
+    container_name: file-service-container
+    replicaCount: 1     
+    image:
+      repository: ghcr.io/ishtiaqsamdani007/bootcamp114-backend-file-service:latest
+    imagePullSecrets: my-docker-secret
+    port: 9006
+    env:
+    - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+      value: https://bc114be.bootcamp64.tk/eureka/
+
+    - name: SPRING_DATASOURCE_URL
+      value: jdbc:mysql://54.91.151.47:30002/contiq_schema
+
+    - name: SPRING_DATASOURCE_PASSWORD
+      value: bc@114
+      
+    - name: EUREKA_INSTANCE_HOSTNAME
+      value: file-service
+    
+    - name: ELASTICSEARCH_TRUSTSTORE_PATH
+      value: /truststore/truststore.jks
+
+    - name: GOOGLE_APPLICATION_CREDENTIALS
+      value: /contiq/bc-114-contiq-6cfc684e5eb9.json
+
+    - name: SPRING_FLYWAY_ENABLED
+      value: "false"
+
+    volumeMounts:
+      - name: truststore
+        mountPath: /truststore
+      - name: contiq
+        mountPath: /contiq
+    volumes:
+      - name: truststore
+        configMap:
+          name: truststore
+          optional: false
+      - name: contiq
+        configMap:
+          name: contiq
+          optional: false
+
+
+  - deployment_name: user-service-deployment
+    label_name: user-service-pod
+    container_name: user-service-container
+    replicaCount: 1     
+    image:
+      repository: ghcr.io/ishtiaqsamdani007/bootcamp114-backend-user-service:latest
+    imagePullSecrets: my-docker-secret
+    port: 9005
+    env:
+    - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+      value: https://bc114be.bootcamp64.tk/eureka/
+
+    - name: SPRING_DATASOURCE_URL
+      value: jdbc:mysql://54.91.151.47:30002/contiq_schema
+
+    - name: SPRING_DATASOURCE_PASSWORD
+      value: bc@114
+      
+    - name: EUREKA_INSTANCE_HOSTNAME
+      value: user-service
+
+    - name: SPRING_FLYWAY_ENABLED
+      value: "false"
+  
+  - deployment_name: notification-service-deployment
+    label_name: notification-service-pod
+    container_name: notification-service-container
+    replicaCount: 1     
+    image:
+      repository: ghcr.io/ishtiaqsamdani007/bootcamp114-backend-notification-service:latest
+    imagePullSecrets: my-docker-secret
+    port: 9007
+    env:
+    - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+      value: https://bc114be.bootcamp64.tk/eureka/
+
+    - name: SPRING_DATASOURCE_URL
+      value: jdbc:mysql://54.91.151.47:30002/contiq_schema
+
+    - name: SPRING_DATASOURCE_PASSWORD
+      value: bc@114
+      
+    - name: EUREKA_INSTANCE_HOSTNAME
+      value: notification-service
+  
+    - name: SPRING_FLYWAY_ENABLED
+      value: "false"
+
+#   - deployment_name: mockserver-deployment
+#     label_name: mockserver-pod
+#     container_name: mockserver-container
+#     replicaCount: 1
+#     image:
+#       repository: ghcr.io/ishtiaqsamdani007/auth0-bootcamp2-mockserver:v3
+#     imagePullSecrets: my-docker-secret
+#     port: 3005   
+
+#   - deployment_name: frontend-deployment
+#     label_name: frontend-pod
+#     container_name: frontend-container
+#     replicaCount: 1     
+#     image:
+#       repository: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-frontend:v6
+#     imagePullSecrets: my-docker-secret
+#     port: 80
+
+#   - deployment_name: database-deployment
+#     label_name: database-pod
+#     container_name: database-container
+#     replicaCount: 1     
+#     image:
+#       repository: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-database:v1
+#     imagePullSecrets: my-docker-secret
+#     envFrom: database-secret  
+#     port: 3306
+#     volumeMounts:
+#     - mountPath: /var/lib/mysql
+#       name: mysql-volume
+#     volumes: 
+#     - name: mysql-volume
+#       persistentVolumeClaim:
+#         claimName: pvc-bc100
+
+#   - deployment_name: service-registry-deployment
+#     label_name: service-registry-pod
+#     container_name: service-registry-container
+#     replicaCount: 1     
+#     image:
+#       repository:  ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-service-registry:v24
+#     imagePullSecrets: my-docker-secret
+#     port: 8761
+#     env:
+#     - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+#       value: https://api1.spcluster.tk/eureka/
+      
+#     - name: EUREKA_INSTANCE_HOSTNAME
+#       value: service-registry-service
+
+#   - deployment_name: cloud-gateway-deployment
+#     label_name: cloud-gateway-pod
+#     container_name: cloud-gateway-container
+#     replicaCount: 1     
+#     image:
+#       repository:  ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-cloud-gateway:v24
+#     imagePullSecrets: my-docker-secret
+#     port: 9191
+#     env:
+#     - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+#       value: https://api1.spcluster.tk/eureka/
+      
+#     - name: EUREKA_INSTANCE_HOSTNAME
+#       value: cloud-gateway-service
+    
+#   - deployment_name: address-service-deployment
+#     label_name: address-service-pod
+#     container_name: address-service-container
+#     replicaCount: 1     
+#     image:
+#       repository: ghcr.io/ishtiaqsamdani007/auth0-bootcamp-backend-address-service:v24
+#     imagePullSecrets: my-docker-secret
+#     port: 9001
+#     env:
+#     - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+#       value: https://api1.spcluster.tk/eureka/
+
+#     - name: SPRING_DATASOURCE_URL
+#       value: jdbc:mysql://54.197.220.35:30002/zemoso_diagnostics?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+
+#     - name: SPRING_DATASOURCE_PASSWORD
+#       value: bc@95
+      
+#     - name: EUREKA_INSTANCE_HOSTNAME
+#       value: address-service
+  
+
+
+services:
+  - service_name: discovery-server-service
+    label_name: discovery-server-pod
+    type: ClusterIP
+    port: 8761
+    targetPort: 8761
+
+  - service_name: api-gateway-service
+    label_name: api-gateway-pod
+    type: ClusterIP
+    port: 8090
+    targetPort: 8090
+
+  - service_name: file-service-service
+    label_name: file-service-pod
+    type: ClusterIP
+    port: 9006
+    targetPort: 9006
+
+  - service_name: user-service-service
+    label_name: user-service-pod
+    type: ClusterIP
+    port: 9005
+    targetPort: 9005
+
+  - service_name: notification-service-service
+    label_name: notification-service-pod
+    type: ClusterIP
+    port: 9007
+    targetPort: 9007
+
+
+
+    
+
+#   - service_name: mockserver-service
+#     label_name: mockserver-pod
+#     type: ClusterIP
+#     port: 3005
+#     targetPort: 3005
+  
+#   - service_name: frontend-service
+#     label_name: frontend-pod
+#     type: ClusterIP
+#     port: 80
+#     targetPort: 80
+  
+#   - service_name: database-service
+#     label_name: database-pod
+#     type: NodePort
+#     port: 3306
+#     targetPort: 3306
+#     nodePort: 30002
+
+#   - service_name: service-registry-service
+#     label_name: service-registry-pod
+#     type: ClusterIP
+#     port: 8761
+#     targetPort: 8761
+
+#   - service_name: cloud-gateway-service
+#     label_name: cloud-gateway-pod
+#     type: ClusterIP
+#     port: 9191
+#     targetPort: 9191
+  
+
+# ingress:
+#   enabled: "true"
+#   name: backend-ingress
+#   className: nginx
+#   sslcertificate: arn:aws:acm:us-east-1:365299945243:certificate/6ff9bd88-7486-4c10-b6f7-b0913c132413
+#   annotations: {nginx.ingress.kubernetes.io/use-regex: "true"}
+#   rules:
+#   - host: bc114be.bootcamp64.tk
+#     http:
+#       paths:
+#         - path: /
+#           pathType: Prefix
+#           serviceName: discovery-server-service
+#           servicePort: 8761
+
+#         - path: /user
+#           pathType: Prefix
+#           serviceName: user-service-service
+#           servicePort: 9005
+
+#         - path: /file
+#           pathType: Prefix
+#           serviceName: file-service-service
+#           servicePort: 9006
+
+#         - path: /api
+#           pathType: Prefix
+#           serviceName: notification-service-service
+#           servicePort: 9007 
+
+
+ingress:
+  enabled: "true"
+  name: backend-ingress
+  className: nginx
+  sslcertificate: arn:aws:acm:us-east-1:365299945243:certificate/6ff9bd88-7486-4c10-b6f7-b0913c132413
+  annotations: {nginx.ingress.kubernetes.io/use-regex: "true"}
+  rules:
+  - host: bc114be.bootcamp64.tk
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: discovery-server-service
+            port:
+              number: 8761
+      - path: /user
+        pathType: Prefix
+        backend:
+          service:
+            name: user-service-service
+            port:
+              number: 9005
+      - path: /file
+        pathType: Prefix
+        backend:
+          service:
+            name: file-service-service
+            port:
+              number: 9006
+
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: notification-service-service
+            port:
+              number: 9007
+
+
+
+
