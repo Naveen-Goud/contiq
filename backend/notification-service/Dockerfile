@@ -1,12 +1,12 @@
-FROM openjdk:17
+# FROM openjdk:17
 
-WORKDIR /micro-service
+# WORKDIR /micro-service
 
-COPY target/*.jar app.jar
-
-
+# COPY target/*.jar app.jar
 
 
-EXPOSE 9007
 
-CMD [ "java","-jar","app.jar" ]
+
+# EXPOSE 9007
+
+# CMD [ "java","-jar","app.jar" ]
