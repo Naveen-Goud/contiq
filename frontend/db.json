@@ -1,0 +1,80 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "John@123456"
+    },
+    {
+      "name": "user",
+      "email": "user1@gmail.com",
+      "password": "User@1233",
+      "id": 2
+ 
+    },
+    {
+      "name": "user",
+      "email": "user1@example.com",
+      "password": "User@123",
+      "id": 3
+    },
+    {
+      "name": "user2",
+      "email": "user2@example.com",
+      "password": "User@123",
+      "id": 4
+ 
+    }
+  ],
+  "file": [
+    {
+      "id": "1",
+      "name": "Software Agreement.pdf",
+      "type": "PDF",
+      "content": "this is the software agrement details page",
+      "path": "https://digiandme.com/wp-content/uploads/2021/03/Assignment-Front-Page-Format-Word-File.png",
+      "isDeleted": false,
+      "isSync": false,
+      "uploadDate": "2023-04-09T14:30:00.000Z",
+      "updateDate": "2023-07-08T14:30:00.000Z"
+    },
+    {
+      "id": "2",
+      "name": "Software Agreement2.pdf",
+      "type": "PDF",
+      "content": "this is the software agrement details page 2",
+      "path": "https://digiandme.com/wp-content/uploads/2021/03/Assignment-Front-Page-Format-Word-File.png",
+      "isDeleted": false,
+      "isSync": false,
+      "uploadDate": "2023-04-10T14:30:00.000Z",
+      "updateDate": "2023-07-08T14:30:00.000Z"
+    },
+    {
+      "id": "3",
+      "name": "Software Agreement3.pdf",
+      "type": "PDF",
+      "content": "this is the software agrement details page 3",
+      "path": "https://digiandme.com/wp-content/uploads/2021/03/Assignment-Front-Page-Format-Word-File.png",
+      "isDeleted": false,
+      "isSync": false,
+      "uploadDate": "2023-04-15T14:30:00.000Z",
+      "updateDate": "2023-07-08T14:30:00.000Z"
+    }
+  ],
+  "collaboratorsNotificationStatus": [
+    {
+      "id": "1",
+      "isRead": false,
+      "notificationId": "1"
+    }
+  ],
+  "notification": [
+    {
+      "id": "1",
+      "userId": "1",
+      "updateDate": "2023-07-08T14:30:00.000Z",
+      "message": "Amith has uploaded company agreement.pdf"
+    }
+  ]
+}
